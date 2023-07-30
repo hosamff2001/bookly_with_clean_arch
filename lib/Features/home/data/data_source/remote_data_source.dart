@@ -1,5 +1,7 @@
+import 'package:bookly_with_clean_arch/constants.dart';
 import 'package:dio/dio.dart';
 
+import '../../../../core/functions/savedata.dart';
 import '../../../../core/utils/dio.dart';
 import '../../domain/entities/book_entity.dart';
 
@@ -12,16 +14,15 @@ class HomeRemoteDataSourceimpl extends HomeRemoteDataSource {
   @override
   Future<List<BookEntity>> fetchfutherdBooks() async {
     var response = await DioHelper.get(url: "volumes", query: {
-      
       "q": "programming",
       "Filtering": "free-ebooks",
       "subject": "flutter"
     });
 
     List<BookEntity> books = getbooksresponse(response);
+    savedatatohive(books, kHiveBooks);
     return books;
   }
-
 
   @override
   Future<List<BookEntity>> fetchnewsetBooks() async {
@@ -35,8 +36,9 @@ class HomeRemoteDataSourceimpl extends HomeRemoteDataSource {
     List<BookEntity> books = getbooksresponse(response);
     return books;
   }
+
   List<BookEntity> getbooksresponse(Response<dynamic> response) {
-     List<BookEntity> books = [];
+    List<BookEntity> books = [];
     for (var item in response.data["items"]) {
       books.add(item);
     }

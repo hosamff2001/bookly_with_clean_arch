@@ -4,7 +4,7 @@ const kPrimaryColor = Color(0xff100B20);
 const kTranstionDuration = Duration(milliseconds: 250);
 const kGtSectraFine = 'GT Sectra Fine';
 
-const kHiveBoks = "book_entity";
+const kHiveBooks = "book_entity";
 
 String getauthors(List<String> authors) {
   String result = "";
