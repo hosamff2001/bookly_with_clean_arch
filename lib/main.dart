@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -8,13 +8,14 @@ import 'constants.dart';
 import 'core/utils/app_router.dart';
 import 'core/utils/dio.dart';
 import 'core/utils/serveslocated.dart';
+import 'core/utils/simpleblocobserver.dart';
 
-
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setupServiceLocator();
   DioHelper.init();
-    await Hive.initFlutter();
+  Bloc.observer = SimpleBlocObserver();
+  await Hive.initFlutter();
   Hive.registerAdapter(BookEntityAdapter());
   await Hive.openBox<BookEntity>(kHiveBooks);
   await Hive.openBox<BookEntity>(kHiveBooksnewset);
