@@ -38,7 +38,9 @@ dependencies:
   get_it: ^7.6.0
   go_router: null
   google_fonts: null
-
+  hive: 
+  hive_flutter: 
+  
 dev_dependencies:
 
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -47,6 +49,8 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  hive_generator: 
+  build_runner: 
   flutter_test:
     sdk: flutter
 

@@ -4,9 +4,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'constants.dart';
 import 'core/utils/app_router.dart';
+import 'core/utils/dio.dart';
+import 'core/utils/serveslocated.dart';
 
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  setupServiceLocator();
+  DioHelper.init();
   runApp(const Bookly());
 }
 
