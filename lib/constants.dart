@@ -4,7 +4,7 @@ const kPrimaryColor = Color(0xff100B20);
 const kTranstionDuration = Duration(milliseconds: 250);
 const kGtSectraFine = 'GT Sectra Fine';
 
-
+const kHiveBoks = "book_entity";
 
 String getauthors(List<String> authors) {
   String result = "";
@@ -13,7 +13,7 @@ String getauthors(List<String> authors) {
   }
   return result.substring(0, result.length - 2);
 }
-void customsnakbar({required context,required String text}) {
-   ScaffoldMessenger.of(context)
-      .showSnackBar( SnackBar(content: Text(text)));
+
+void customsnakbar({required context, required String text}) {
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(text)));
 }
