@@ -34,6 +34,8 @@ class HomeRemoteDataSourceimpl extends HomeRemoteDataSource {
     });
 
     List<BookEntity> books = getbooksresponse(response);
+
+        savedatatohive(books, kHiveBooksnewset);
     return books;
   }
 
