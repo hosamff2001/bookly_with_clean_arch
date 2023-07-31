@@ -1,6 +1,7 @@
-import 'package:bloc/bloc.dart';
+
 import 'package:bookly_with_clean_arch/Features/home/domain/use_case/fetch_newset_books.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../domain/entities/book_entity.dart';
 

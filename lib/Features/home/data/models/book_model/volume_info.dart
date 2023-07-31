@@ -78,7 +78,7 @@ class VolumeInfo extends Equatable {
                 json['panelizationSummary'] as Map<String, dynamic>),
         imageLinks: json['imageLinks'] ==null ?  null:
             ImageLinks.fromJson(json['imageLinks'] as Map<String, dynamic>),
-                    rating:json['averageRating'] as int?,
+                    rating:json['averageRating'] as num?,
         ratingcount:json['ratingsCount'] as int?,
         language: json['language'] as String?,
         previewLink: json['previewLink'] as String?,

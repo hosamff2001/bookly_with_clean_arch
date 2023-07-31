@@ -1,3 +1,4 @@
+import 'package:bookly_with_clean_arch/Features/home/data/models/book_model/book_model.dart';
 import 'package:bookly_with_clean_arch/constants.dart';
 import 'package:dio/dio.dart';
 
@@ -20,6 +21,7 @@ class HomeRemoteDataSourceimpl extends HomeRemoteDataSource {
     });
 
     List<BookEntity> books = getbooksresponse(response);
+   
     savedatatohive(books, kHiveBooks);
     return books;
   }
@@ -35,14 +37,14 @@ class HomeRemoteDataSourceimpl extends HomeRemoteDataSource {
 
     List<BookEntity> books = getbooksresponse(response);
 
-        savedatatohive(books, kHiveBooksnewset);
+    savedatatohive(books, kHiveBooksnewset);
     return books;
   }
 
   List<BookEntity> getbooksresponse(Response<dynamic> response) {
     List<BookEntity> books = [];
     for (var item in response.data["items"]) {
-      books.add(item);
+      books.add(BookModel.fromJson(item));
     }
     return books;
   }

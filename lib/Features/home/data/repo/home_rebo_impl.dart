@@ -22,10 +22,12 @@ class HomeRepoImple implements HomeRepo {
       books = await homeRemoteDataSource.fetchfutherdBooks();
       return right(books);
     } catch (e) {
+     
       if (e is DioException) {
         left(ServerFailure.fromDioError(e));
       }
-      return left(ServerFailure("oops ,There error ocured , please try agine later "));
+      return left(
+          ServerFailure(e.toString()));
     }
   }
 
@@ -42,7 +44,8 @@ class HomeRepoImple implements HomeRepo {
       if (e is DioException) {
         left(ServerFailure.fromDioError(e));
       }
-      return left(ServerFailure("oops ,There error ocured , please try agine later "));
+      return left(
+          ServerFailure("oops ,There error ocured , please try agine later "));
     }
   }
 }
