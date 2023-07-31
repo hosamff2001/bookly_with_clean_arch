@@ -11,6 +11,7 @@ class FeaturedBooksInitial extends FeaturedBooksState {}
 
 class FeaturedBooksLoading extends FeaturedBooksState {}
 
+class FeaturedBooksLoadingPagination extends FeaturedBooksState {}
 class FeaturedBooksSuccess extends FeaturedBooksState {
   final List<BookEntity> books;
 
@@ -21,4 +22,9 @@ class FeaturedBooksError extends FeaturedBooksState {
   final String erromessage;
 
   const FeaturedBooksError(this.erromessage);
+}
+class FeaturedBooksErrorPagination extends FeaturedBooksState {
+  final String erromessage;
+
+  const FeaturedBooksErrorPagination(this.erromessage);
 }
