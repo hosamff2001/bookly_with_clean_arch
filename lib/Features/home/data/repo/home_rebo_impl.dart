@@ -13,13 +13,13 @@ class HomeRepoImple implements HomeRepo {
   HomeRepoImple(
       {required this.homeLocalDataSource, required this.homeRemoteDataSource});
   @override
-  Future<Either<Faillure, List<BookEntity>>> fetchfuaturebooks() async {
+  Future<Either<Faillure, List<BookEntity>>> fetchfuaturebooks({int pagenumber=0}) async {
     try {
-      List<BookEntity> books = homeLocalDataSource.fetchfutherdBooks();
+      List<BookEntity> books = homeLocalDataSource.fetchfutherdBooks(pagenumber: pagenumber);
       if (books.isNotEmpty) {
         return right(books);
       }
-      books = await homeRemoteDataSource.fetchfutherdBooks();
+      books = await homeRemoteDataSource.fetchfutherdBooks(pagenumber: pagenumber);
       return right(books);
     } catch (e) {
      

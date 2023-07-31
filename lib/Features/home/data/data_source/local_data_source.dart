@@ -4,15 +4,19 @@ import 'package:hive_flutter/hive_flutter.dart';
 import '../../domain/entities/book_entity.dart';
 
 abstract class HomeLocalDataSource {
-  List<BookEntity> fetchfutherdBooks();
+  List<BookEntity> fetchfutherdBooks({int pagenumber=0});
   List<BookEntity> fetchnewsetBooks();
 }
 
 class HomeLocalDataSourceimpl extends HomeLocalDataSource {
   @override
-  List<BookEntity> fetchfutherdBooks() {
+  List<BookEntity> fetchfutherdBooks({int pagenumber=0}) {
     var books = Hive.box<BookEntity>(kHiveBooks);
-    return books.values.toList();
+
+    if (pagenumber*10>books.length) {
+      return [];
+    }
+    return books.values.toList().sublist(pagenumber*10);
   }
 
   @override

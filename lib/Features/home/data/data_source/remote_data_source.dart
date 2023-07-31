@@ -7,17 +7,18 @@ import '../../../../core/utils/dio.dart';
 import '../../domain/entities/book_entity.dart';
 
 abstract class HomeRemoteDataSource {
-  Future<List<BookEntity>> fetchfutherdBooks();
+  Future<List<BookEntity>> fetchfutherdBooks({int pagenumber=0});
   Future<List<BookEntity>> fetchnewsetBooks();
 }
 
 class HomeRemoteDataSourceimpl extends HomeRemoteDataSource {
   @override
-  Future<List<BookEntity>> fetchfutherdBooks() async {
+  Future<List<BookEntity>> fetchfutherdBooks({int pagenumber=0}) async {
     var response = await DioHelper.get(url: "volumes", query: {
       "q": "programming",
       "Filtering": "free-ebooks",
-      "subject": "flutter"
+      "subject": "flutter",
+      "startIndex": (pagenumber*10).toString()
     });
 
     List<BookEntity> books = getbooksresponse(response);
